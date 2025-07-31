@@ -1,13 +1,18 @@
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
-using Ambev.DeveloperEvaluation.WebApi.Common;
-using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale;
-using Ambev.DeveloperEvaluation.WebApi.Features.Sales.GetSale;
-using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale;
+using Ambev.DeveloperEvaluation.Application.Sales.CancelSale;
 using Ambev.DeveloperEvaluation.Application.Sales.CreateSale;
 using Ambev.DeveloperEvaluation.Application.Sales.GetSale;
-using Ambev.DeveloperEvaluation.Application.Sales.CancelSale;
+using Ambev.DeveloperEvaluation.WebApi.Common;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale.Requests;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale.Responses;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale.Responses;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.GetSale;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.GetSale.Requests;
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.GetSale.Responses;
+using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales;
 
@@ -76,14 +81,14 @@ public class SalesController : BaseController
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> CancelSale([FromRoute] Guid id, [FromBody] CancelSaleRequest request, CancellationToken cancellationToken)
     {
-        request.Id = id;
+        var updatedRequest = request with { Id = id };
         var validator = new CancelSaleRequestValidator();
-        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+        var validationResult = await validator.ValidateAsync(updatedRequest, cancellationToken);
 
         if (!validationResult.IsValid)
             return BadRequest(validationResult.Errors);
 
-        var command = new CancelSaleCommand(request.Id, request.CancellationReason);
+        var command = new CancelSaleCommand(updatedRequest.Id, updatedRequest.CancellationReason);
         var response = await _mediator.Send(command, cancellationToken);
 
         return Ok(new ApiResponseWithData<CancelSaleResponse>
@@ -93,4 +98,6 @@ public class SalesController : BaseController
             Data = _mapper.Map<CancelSaleResponse>(response)
         });
     }
+
+
 }

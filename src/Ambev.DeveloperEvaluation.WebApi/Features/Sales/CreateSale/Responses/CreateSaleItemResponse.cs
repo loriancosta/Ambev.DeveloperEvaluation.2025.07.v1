@@ -1,11 +1,11 @@
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale.Responses;
 
-public class CreateSaleItemResponse
+public record class CreateSaleItemResponse
 {
-    public CreateSaleProductResponse Product { get; set; } = new();
-    public int Quantity { get; set; }
-    public decimal UnitPrice { get; set; }
-    public decimal Discount { get; set; }
-    public decimal TotalAmount { get; set; }
-    public bool IsCancelled { get; set; }
+    public CreateSaleProductResponse Product { get; init; } = new();
+    public int Quantity { get; init; }
+    public decimal UnitPrice { get; init; }
+    public decimal Discount { get; init; }
+    public decimal TotalAmount { get; init; }
+    public bool IsCancelled { get; init; }
 }

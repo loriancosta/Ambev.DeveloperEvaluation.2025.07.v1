@@ -1,5 +1,6 @@
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale;
 
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale.Responses;
 using Application.Sales.CancelSale.Results;
 using AutoMapper;
 

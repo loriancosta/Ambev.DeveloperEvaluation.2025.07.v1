@@ -1,8 +1,8 @@
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale.Responses;
 
-public class CreateSaleBranchResponse
+public record class CreateSaleBranchResponse
 {
-    public string ExternalId { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
-    public string City { get; set; } = string.Empty;
+    public string ExternalId { get; init; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
+    public string City { get; init; } = string.Empty;
 }

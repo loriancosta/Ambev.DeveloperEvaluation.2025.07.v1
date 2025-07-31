@@ -1,3 +1,4 @@
+using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale.Requests;
 using FluentValidation;
 
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale;

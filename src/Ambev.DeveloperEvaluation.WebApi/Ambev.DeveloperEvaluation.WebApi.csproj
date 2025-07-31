@@ -26,8 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Sales\CancelSale\Responses\" />
-    <Folder Include="Features\Sales\CreateSale\Responses\" />
-    <Folder Include="Features\Sales\GetSale\Responses\" />
     <Folder Include="Features\Users\GetUser\" />
     <Folder Include="Features\Users\DeleteUser\" />
     <Folder Include="Features\Users\ListUsers\" />

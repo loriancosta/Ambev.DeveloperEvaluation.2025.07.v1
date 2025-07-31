@@ -1,12 +1,12 @@
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale;
 
-public class CreateSaleItemRequest
+public record class CreateSaleItemRequest
 {
-    public string ProductExternalId { get; set; } = string.Empty;
-    public string ProductName { get; set; } = string.Empty;
-    public string ProductDescription { get; set; } = string.Empty;
-    public string ProductCategory { get; set; } = string.Empty;
-    public decimal ProductPrice { get; set; }
-    public int Quantity { get; set; }
-    public decimal UnitPrice { get; set; }
+    public string ProductExternalId { get; init; } = string.Empty;
+    public string ProductName { get; init; } = string.Empty;
+    public string ProductDescription { get; init; } = string.Empty;
+    public string ProductCategory { get; init; } = string.Empty;
+    public decimal ProductPrice { get; init; }
+    public int Quantity { get; init; }
+    public decimal UnitPrice { get; init; }
 }

@@ -1,11 +1,11 @@
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale.Responses;
 
-public class CancelSaleResponse
+public record class CancelSaleResponse
 {
-    public Guid Id { get; set; }
-    public string SaleNumber { get; set; } = string.Empty;
-    public bool IsCancelled { get; set; }
-    public string CancellationReason { get; set; } = string.Empty;
-    public DateTime? UpdatedAt { get; set; }
-    public decimal TotalAmount { get; set; }
+    public Guid Id { get; init; }
+    public string SaleNumber { get; init; } = string.Empty;
+    public bool IsCancelled { get; init; }
+    public string CancellationReason { get; init; } = string.Empty;
+    public DateTime? UpdatedAt { get; init; }
+    public decimal TotalAmount { get; init; }
 }

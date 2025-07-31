@@ -1,7 +1,7 @@
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelSale.Requests;
 
-public class CancelSaleRequest
+public record class CancelSaleRequest
 {
-    public Guid Id { get; set; }
-    public string CancellationReason { get; set; } = string.Empty;
+    public Guid Id { get; init; }
+    public string CancellationReason { get; init; } = string.Empty;
 }
